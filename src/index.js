@@ -19,6 +19,9 @@ startButton.addEventListener("click", () => {
 //TODO ITERATION 2: Start Countdown
 function startCountdown() {
   // Your code goes here ...
+  remainingTime = 10;
+  startButton.disabled = true;
+  timerElement.innerText = remainingTime;
   toastMessage.innerText = "⏰ Final countdown! ⏰";
   showToast();
   timer = setInterval(() => {
@@ -31,6 +34,7 @@ function startCountdown() {
     if (remainingTime === 0) {
       clearInterval(timer);
       toastMessage.innerText = "Lift off! 🚀";
+      startButton.disabled = false;
       showToast();
     }
   }, 1000);
