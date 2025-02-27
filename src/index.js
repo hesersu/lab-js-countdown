@@ -9,19 +9,21 @@ const timerElement = document.getElementById("time");
 const toastElement = document.getElementById("toast");
 const toastCloseButton = document.getElementById("close-toast");
 const toastMessage = document.getElementById("toast-message");
-const audio = new Audio("./assets/biohazard-alarm-143105.mp3");
+const audioAlarm = new Audio("./assets/biohazard-alarm-143105.mp3");
+const audioTicking = new Audio("./assets/ticking-timer-65220.mp3");
 
-//TODO ITERATION 1: Add event listener to the start button
+//* ITERATION 1: Add event listener to the start button
 // Your code goes here ...
 
 startButton.addEventListener("click", () => {
   startCountdown();
 });
 
-//TODO ITERATION 2: Start Countdown
+//* ITERATION 2: Start Countdown
 function startCountdown() {
   // Your code goes here ...
-  audio.pause();
+  audioAlarm.pause();
+  audioTicking.play();
   remainingTime = DURATION;
   startButton.disabled = true;
   timerElement.innerText = remainingTime;
@@ -38,14 +40,15 @@ function startCountdown() {
       clearInterval(timer);
       toastMessage.innerText = "Lift off! 🚀";
       startButton.disabled = false;
-      audio.play();
+      audioTicking.pause();
+      audioAlarm.play();
       showToast();
       startButton.innerText = "Restart Countdown";
     }
   }, 1000);
 }
 
-//TODO ITERATION 3: Show Toast
+//* ITERATION 3: Show Toast
 function showToast(message) {
   console.log("showToast called!");
   toastElement.style.visibility = "visible";
