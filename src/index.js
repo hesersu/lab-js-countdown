@@ -3,7 +3,7 @@ const DURATION = 10; // 10 seconds
 let remainingTime = DURATION; // Countdown starting from 10
 let timer = null; // Variable to store the interval
 
-// HTML Components
+// HTML Components & Assets
 const startButton = document.getElementById("start-btn");
 const timerElement = document.getElementById("time");
 const toastElement = document.getElementById("toast");
