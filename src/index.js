@@ -1,3 +1,4 @@
+// Timer Logic
 const DURATION = 10; // 10 seconds
 let remainingTime = DURATION; // Countdown starting from 10
 let timer = null; // Variable to store the interval
@@ -8,6 +9,7 @@ const timerElement = document.getElementById("time");
 const toastElement = document.getElementById("toast");
 const toastCloseButton = document.getElementById("close-toast");
 const toastMessage = document.getElementById("toast-message");
+const audio = new Audio("./assets/biohazard-alarm-143105.mp3");
 
 //TODO ITERATION 1: Add event listener to the start button
 // Your code goes here ...
@@ -19,7 +21,8 @@ startButton.addEventListener("click", () => {
 //TODO ITERATION 2: Start Countdown
 function startCountdown() {
   // Your code goes here ...
-  remainingTime = 10;
+  audio.pause();
+  remainingTime = DURATION;
   startButton.disabled = true;
   timerElement.innerText = remainingTime;
   toastMessage.innerText = "⏰ Final countdown! ⏰";
@@ -35,7 +38,9 @@ function startCountdown() {
       clearInterval(timer);
       toastMessage.innerText = "Lift off! 🚀";
       startButton.disabled = false;
+      audio.play();
       showToast();
+      startButton.innerText = "Restart Countdown";
     }
   }, 1000);
 }
