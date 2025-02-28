@@ -22,6 +22,8 @@ startButton.addEventListener("click", () => {
 //* ITERATION 2: Start Countdown
 function startCountdown() {
   // Your code goes here ...
+
+  // Before the Timer
   audioAlarm.pause();
   audioTicking.play();
   remainingTime = DURATION;
@@ -29,6 +31,8 @@ function startCountdown() {
   timerElement.innerText = remainingTime;
   toastMessage.innerText = "⏰ Final countdown! ⏰";
   showToast();
+
+  // During Timer
   timer = setInterval(() => {
     remainingTime--;
     timerElement.innerText = remainingTime;
@@ -36,6 +40,8 @@ function startCountdown() {
       toastMessage.innerText = "Start the engines! 💥";
       showToast();
     }
+
+    // At the end of the timer
     if (remainingTime === 0) {
       clearInterval(timer);
       toastMessage.innerText = "Lift off! 🚀";
@@ -51,6 +57,7 @@ function startCountdown() {
 //* ITERATION 3: Show Toast
 function showToast(message) {
   console.log("showToast called!");
+  // Closing Button
   toastElement.style.visibility = "visible";
   // Close Button
   toastCloseButton.addEventListener("click", () => {
